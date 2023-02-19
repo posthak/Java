@@ -23,6 +23,6 @@ public class homeWork2_1 {
             }
         }
         tempString.append(".");
-        return new String(tempString);
+        return tempString.toString();
     }
 }
