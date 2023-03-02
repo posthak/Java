@@ -16,20 +16,20 @@ public class homeWork5_1 {
     public static void main(String[] args) {
         int[] num1 = { 3, 0, 4, 7, 9 };
         int[] num2 = { 1, 4, 7, 9, 0 };
-        ArrayList<Integer> ar = getMax(SubArray(num1, num2));
+        ArrayList<Integer> ar = getMaxList(separateBySubArray(num1, num2));
         System.out.println("Input: num1 = " + Arrays.toString(num1) + ", num2 = " + Arrays.toString(num2));
         System.out.println("Output: " + ar.size());
         System.out.println("Explanation: Повторяющийся подмассив с максимальной длиной равен " + ar);
     }
 
-    public static HashMap<Integer, ArrayList<Integer>> SubArray(int[] num1, int[] num2) {
+    public static HashMap<Integer, ArrayList<Integer>> separateBySubArray(int[] num1, int[] num2) {
         HashMap<Integer, ArrayList<Integer>> hash = new HashMap<Integer, ArrayList<Integer>>();
         ArrayList<Integer> hs = new ArrayList<>();
 
         for (int i = 0; i < num1.length; i++) {
             for (int x = 0; x < num2.length; x++) {
                 if (num1[i] == num2[x]) {
-                    hs = getHs(i, x, num1, num2);
+                    hs = getSubList(i, x, num1, num2);
                     break;
                 }
             }
@@ -38,7 +38,7 @@ public class homeWork5_1 {
         return hash;
     }
 
-    public static ArrayList<Integer> getHs(int stIndex1, int stIndex2, int[] n1, int[] n2) {
+    public static ArrayList<Integer> getSubList(int stIndex1, int stIndex2, int[] n1, int[] n2) {
         ArrayList<Integer> set = new ArrayList<>();
         while (stIndex1 < n1.length && stIndex2 < n2.length) {
             if (n1[stIndex1] == n2[stIndex2]) {
@@ -52,7 +52,7 @@ public class homeWork5_1 {
         return set;
     }
 
-    public static ArrayList<Integer> getMax(HashMap<Integer, ArrayList<Integer>> hash) {
+    public static ArrayList<Integer> getMaxList(HashMap<Integer, ArrayList<Integer>> hash) {
         ArrayList<Integer> set = new ArrayList<>();
         Integer max = hash.get(0).size();
         set = hash.get(0);
